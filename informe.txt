@@ -1,0 +1,17 @@
+INFORME
+- ¿Qué pasos del plan se realizaron y qué pasos se omitieron (explica por qué)?
+Los pasos que se omitieron fueron los siguientes:
+* Unir los dataframes mediante SQL, ya que parecía no tener mucho sentido pudiendose hacer directamente en código de python y porque surgían dudas de qué hacer primero; sin embargo, se hicieron varias pruebas en SQL server management studio para este propósito pero encontré más rápido y conveniente hacerlo por aquí.
+* Calcular otras métricas como la eficiencia, puntuación F1 y validación cruzada. Los calculos anteriores se calcularon algunas otras métricas; sin embargo, AUC-ROC era la métrica pedida en este trabajo y añadir las otras parecía redundante. Lo que tal vez hizo falta fue una validación cruzada para observar como iba dismuyendo el error y así poder establecer las mejores métricas de los modelos sin llegar al sobreajuste.
+* No fué necesario balancear clases.
+* No fué necesario el uso de hiperparámetros ya que con pocos ajustes se alcanzó y se revazó el máximo de puntuación AUC-ROC solicitado.
+- ¿Qué dificultades encontraste y cómo lograste resolverlas?
+* Entender cuales variables guardaban más correlación con la tarea a realizar. Para resolver esto generé graficos de barras para algunas variables contra la variable objetivo y hice pruebas quitando variables del dataframe completo para obsevar si había alguna que no afectara al rendimiento del modelo, descubri que la variable "dependents" por ejemplo, aporta poca información al modelo, sin ella la eficiencia bajaba menos de un 1%
+* Elección de modelos. Aunque tenía mis dudas de qué modelos me darían las mejores métricas recurrí a los más usados durante el curso.
+* Tuve dudas si quitar los valores ausentes de la variable original "totalchargers" pero me dí cuenta que si quitaba esos pocos datos la eficiencia caía más de 3%
+- ¿Cuáles fueron algunos de los pasos clave para resolver la tarea?
+* Seguir los pasos que habia planteado en el plan de trabajo.
+* Hacer varias pruebas en hiperpaámetros selección de varibles, selección de modelos, etc.
+* Seguir las recomendaciones y la guía del curso
+- ¿Cuál es tu modelo final y qué nivel de calidad tiene?
+* El modelo que mejor AUC-ROC entregó fué "Gradient Boosting" con un nivel de calidad del 91.25% con una taza de aprendizaje de 0.2 y un valor de n_estimators de 500 (aunque puede ser menor).
